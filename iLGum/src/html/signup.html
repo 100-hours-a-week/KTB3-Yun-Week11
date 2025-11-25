@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>회원가입 | iLGum</title>
+  <link rel="stylesheet" href="./css/signup.css" />
+</head>
+<body>
+  <main class="signup-layout">
+    <section class="signup-card" aria-labelledby="signup-heading">
+      <div class="signup-card__header">
+        <h2 id="signup-heading">회원가입</h2>
+      </div>
+
+      <form id="signupForm" novalidate>
+        <div class="profile-field">
+          <label for="profileImage" class="field-label">프로필 이미지</label>
+          <label class="avatar-upload" for="profileImage" aria-label="프로필 이미지 업로드">
+            <span class="avatar-mark">+</span>
+            <input id="profileImage" name="profileImage" type="file" accept="image/*" />
+          </label>
+          <p id="profileImageHelp" class="helper-text"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="email">이메일 *</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            inputmode="email"
+            placeholder="example@ilgum.com"
+            autocomplete="email"
+            required
+            aria-describedby="emailHelp"
+          />
+          <p id="emailHelp" class="helper-text"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="password">비밀번호 *</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="비밀번호를 입력하세요"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="20"
+            required
+            aria-describedby="passwordHelp"
+          />
+          <p id="passwordHelp" class="helper-text"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="passwordConfirm">비밀번호 확인 *</label>
+          <input
+            id="passwordConfirm"
+            name="passwordConfirm"
+            type="password"
+            placeholder="비밀번호를 한 번 더 입력하세요"
+            autocomplete="new-password"
+            minlength="8"
+            maxlength="20"
+            required
+            aria-describedby="passwordConfirmHelp"
+          />
+          <p id="passwordConfirmHelp" class="helper-text"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="nickname">닉네임 *</label>
+          <input
+            id="nickname"
+            name="nickname"
+            type="text"
+            placeholder="닉네임을 입력하세요"
+            maxlength="10"
+            required
+            aria-describedby="nicknameHelp"
+          />
+          <p id="nicknameHelp" class="helper-text"></p>
+        </div>
+
+        <button id="signup-btn" type="submit" disabled>회원가입</button>
+
+        <p class="alt-link">
+          이미 계정이 있다면? <a id="login-link" href="./login.html">로그인</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <script src="./js/signup.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 | iLGum</title>
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+  <main class="login-layout">
+    <section class="brand-panel">
+      <h1>당신의 <span>읽음</span>이<br> 당신의 세상을<span> iLGum</span></h1>
+    </section>
+
+    <section id="login-section" class="login-card" aria-labelledby="login-heading">
+      <div class="login-card__header">
+      </div>
+
+      <form id="login-form" method="post" novalidate>
+        <div class="form-field">
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@ilgum.com"
+            required
+            autocomplete="email"
+            aria-describedby="email-helper"
+          >
+          <p id="email-helper" class="helper-text"></p>
+        </div>
+
+        <div class="form-field">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="비밀번호를 입력하세요"
+            required
+            autocomplete="current-password"
+            aria-describedby="password-helper"
+          >
+          <p id="password-helper" class="helper-text"></p>
+        </div>
+
+        <button id="login-btn" type="submit" disabled>로그인</button>
+      </form>
+
+      <p>
+        <a href="signup.html" id="signup-link">회원가입</a>
+      </p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p class="quote-text">Reading is the seed of knowledge.</p>
+    <p class="quote-author">(Melvil Dewey, 1851-1931)</p>
+  </footer>
+<script src="./js/auth.js" defer></script>
+<script src="./js/login.js" defer></script>
+</body>
+</html>
