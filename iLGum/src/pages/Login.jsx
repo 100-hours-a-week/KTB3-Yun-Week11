@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../api/common";
 import { isValidEmail, isEmptyPassword } from "../utils/validation";
+import {auth} from '../api/auth'
 import "../styles/login.css";
 import "../styles/buttons.css";
 import PrimaryButton from "../components/PrimaryButton";
@@ -41,7 +42,7 @@ export default function LoginPage() {
 
       if (res.ok) {
         const payload = await res.json();
-        window.authClient?.setTokens(payload);
+        auth.setTokens(payload);
         alert("로그인 성공");
         navigate('/posts');
       } else if (res.status === 404 || res.status === 401) {
