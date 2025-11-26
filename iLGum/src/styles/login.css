@@ -150,7 +150,7 @@ footer.site-footer {
   color: var(--helper);
 }
 
-#login-btn {
+/* #login-btn {
   width: 100%;
   padding: 14px;
   border-radius: 16px;
@@ -170,7 +170,7 @@ footer.site-footer {
 }
 #login-btn:enabled:active {
   transform: translateY(1px);
-}
+} */
 
 #signup-link {
   display: inline-flex;

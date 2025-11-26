@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { apiFetch } from '../api/common'
 import '../styles/login.css'
+import '../styles/buttons.css'
+import PrimaryButton from '../components/PrimaryButton'
 
 export default function LoginPage () {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [helper, setHelper] = useState({ email: '', password: '' })
+
+    const isDisabled = !email || !password || helper.email || helper.password
 
     const validateEmail = (v) =>
     /^[a-z]{4,20}@[a-z]+(\.[a-z]+)*(\.[a-z]{2,})$/.test(v.trim()) ? '' : '*올바른 이메일 주소 형식을 입력해주세요. (예: example@example.com)'
@@ -26,20 +30,23 @@ export default function LoginPage () {
                 return
             }
 
-        const res = await apiFetch('/members/session', {
-            method: 'POST',
-            body: JSON.stringify({ email, password }),
-        })
+        try {
+          const res = await apiFetch('/members/session', {
+              method: 'POST',
+              body: JSON.stringify({ email, password }),
+          })
 
-        if (res.ok) {
-            const payload = await res.json()
-            window.authClient?.setTokens(payload)
-            alert('로그인 성공')
-            // TODO: '/posts'로 navigate
-        } else if (res.status === 404 || res.status === 401) {
-            setHelper((p) => ({ ...p, password: '*아이디 또는 비밀번호를 확인해주세요' }))
-        } else {
-            alert('잠시 후 다시 시도해주세요.')
+          if (res.ok) {
+              const payload = await res.json()
+              window.authClient?.setTokens(payload)
+              alert('로그인 성공')
+              // TODO: '/posts'로 navigate
+          } else if (res.status === 404 || res.status === 401) {
+              setHelper((p) => ({ ...p, password: '*아이디 또는 비밀번호를 확인해주세요' }))
+          } 
+        } catch (err) {
+              console.log('요청 실패', err)
+              alert('잠시 후 다시 시도해주세요.')
         }
     }
 
@@ -61,7 +68,7 @@ export default function LoginPage () {
             <input id="password" type="password" value={password} onChange={handleChange(setPassword, 'password')} />
             <p className="helper-text">{helper.password}</p>
           </div>
-          <button id="login-btn" type="submit" disabled={Boolean(helper.email || helper.password)}>로그인</button>
+          <PrimaryButton type="submit" disabled={isDisabled}>로그인</PrimaryButton>
           <p><a id="signup-link" href="/signup">회원가입</a></p>
         </form>
       </section>
