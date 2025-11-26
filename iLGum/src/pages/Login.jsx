@@ -28,7 +28,6 @@ export default function LoginPage () {
 
         const res = await apiFetch('/members/session', {
             method: 'POST',
-            credentials: 'include',
             body: JSON.stringify({ email, password }),
         })
 
