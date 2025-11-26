@@ -31,4 +31,8 @@ export const apiFetch = async (path, options={}) => {
     }
     return res
 }
-    
+
+export const logoutFetch = async () => {
+    const res = await apiFetch('/members/logout', {method: 'POST'})
+    return res.status === 204
+}
