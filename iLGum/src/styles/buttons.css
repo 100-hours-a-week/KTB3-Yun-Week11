@@ -10,12 +10,114 @@
   cursor: pointer;
   transition: transform 0.1s, opacity 0.2s;
 }
+
 .submit-btn:disabled {
   background: #8a9b6e;
   color: rgba(8, 11, 17, 0.6);
   cursor: not-allowed;
   opacity: 0.7;
 }
+
 .submit-btn:enabled:active {
   transform: translateY(1px);
+}
+
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-button {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile-button::-webkit-details-marker,
+.profile-button::marker {
+  display: none;
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+.profile-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 190px;
+  margin: 0;
+  padding: 12px 0;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 22px;
+  box-shadow: 0 36px 80px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(45px) saturate(240%);
+  -webkit-backdrop-filter: blur(45px) saturate(240%);
+  z-index: 15;
+  overflow: hidden;
+}
+
+.profile-dropdown:not([open]) .profile-dropdown-menu {
+  display: none;
+}
+
+.profile-dropdown-menu a,
+.logout-link {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #1d1a14;;
+  transition: background 0.2s;
+}
+.profile-dropdown-menu a:hover,
+.logout-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 21px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.08));
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.profile-dropdown-menu > * {
+  position: relative;
+  z-index: 1;
+}
+
+.logout-link {
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.back-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #1d1a14;;
 }

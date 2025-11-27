@@ -1,6 +1,6 @@
 import {auth} from './auth'
 
-export const API_BASE = 'http://127.0.0.1:8080'
+export const API_BASE = 'http://localhost:8080'
 export const apiFetch = async (path, options={}) => {
     const {accessToken} = auth.getToken()
     const headers = {
@@ -34,5 +34,5 @@ export const apiFetch = async (path, options={}) => {
 
 export const logoutFetch = async () => {
     const res = await apiFetch('/members/logout', {method: 'POST'})
-    return res.status === 204
+    return res
 }

@@ -15,7 +15,7 @@ const clearToken = () => { authState = null; sessionStorage.removeItem(STORAGE_K
 
 const getToken = () => {
     load()
-    return { authState }
+    return { accessToken: authState }
 }
 
 export const auth = {setTokens, clearToken, getToken}
