@@ -7,7 +7,7 @@ import {
   isValidConfirmPassword,
   isValidNickname,
 } from "../utils/validation";
-import PrimaryButton from "../components/PrimaryButton";
+import {SubmitButton} from "../components/Buttons";
 import "../styles/signup.css";
 import "../styles/buttons.css";
 
@@ -181,9 +181,9 @@ export default function SignupPage() {
               <p className="helper-text">{helper.nickname}</p>
             </div>
 
-            <PrimaryButton id="signup-btn" type="submit" disabled={isDisabled}>
+            <SubmitButton id="signup-btn" type="submit" disabled={isDisabled}>
               회원가입
-            </PrimaryButton>
+            </SubmitButton>
 
             <p className="alt-link">
               이미 계정이 있다면?{" "}

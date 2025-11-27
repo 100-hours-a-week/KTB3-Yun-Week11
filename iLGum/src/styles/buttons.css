@@ -1,4 +1,4 @@
-.primary-btn {
+.submit-btn {
   width: 100%;
   padding: 14px;
   border-radius: 16px;
@@ -10,12 +10,12 @@
   cursor: pointer;
   transition: transform 0.1s, opacity 0.2s;
 }
-.primary-btn:disabled {
+.submit-btn:disabled {
   background: #8a9b6e;
   color: rgba(8, 11, 17, 0.6);
   cursor: not-allowed;
   opacity: 0.7;
 }
-.primary-btn:enabled:active {
+.submit-btn:enabled:active {
   transform: translateY(1px);
 }

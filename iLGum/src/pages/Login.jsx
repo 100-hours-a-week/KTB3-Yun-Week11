@@ -5,7 +5,7 @@ import { isValidEmail, isEmptyPassword } from "../utils/validation";
 import {auth} from '../api/auth'
 import "../styles/login.css";
 import "../styles/buttons.css";
-import PrimaryButton from "../components/PrimaryButton";
+import {SubmitButton} from "../components/Buttons";
 
 export default function LoginPage() {  
   const [email, setEmail] = useState("");
@@ -87,9 +87,9 @@ export default function LoginPage() {
               />
               <p className="helper-text">{helper.password}</p>
             </div>
-            <PrimaryButton type="submit" disabled={isDisabled}>
+            <SubmitButton type="submit" disabled={isDisabled}>
               로그인
-            </PrimaryButton>
+            </SubmitButton>
             <p>
               <a id="signup-link" href="/signup">
                 회원가입
