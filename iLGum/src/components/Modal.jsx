@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { ConfirmButton, CancelButton } from "./Buttons";
 import "../styles/modal.css";
 
@@ -13,10 +14,10 @@ export function ConfirmModal({
   if (!open) return null;
 
   const stop = (e) => {
-    e.stopPropagation()
-  }
-  
-  return (
+    e.stopPropagation();
+  };
+
+  const modal = (
     <section
       className="modal"
       role="dialog"
@@ -50,4 +51,6 @@ export function ConfirmModal({
       </div>
     </section>
   );
+
+  return createPortal(modal, document.body);
 }

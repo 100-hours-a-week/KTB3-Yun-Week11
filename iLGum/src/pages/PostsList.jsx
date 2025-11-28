@@ -61,7 +61,12 @@ export default function PostsListPage() {
       if (res.status === 204) {
         auth.clearToken();
         navigate("/");
-        return
+        return;
+      }
+
+      if (res.status === 403) {
+        console.log(res.body);
+        navigate("/");
       }
     } catch (err) {
       console.log("요청 실패", err);
@@ -74,7 +79,11 @@ export default function PostsListPage() {
         <div className="site-header__inner">
           <h1 className="site-title">iLGum</h1>
           <div className="site-search">
-            <input type="text" placeholder="게시글 검색어를 입력해주세요." aria-label="게시글 검색" />
+            <input
+              type="text"
+              placeholder="게시글 검색어를 입력해주세요."
+              aria-label="게시글 검색"
+            />
           </div>
           <DropdownMenu onClick={handleLogout} />
         </div>
@@ -83,8 +92,14 @@ export default function PostsListPage() {
       <main className="container" role="main">
         <section className="intro">
           <div className="intro-left">
-            <p className="greeting">당신이 캐낸 문장을 <strong>iLGum</strong>에 심어 보세요.</p>
-            <div className="category-filter" role="group" aria-label="장르 선택">
+            <p className="greeting">
+              당신이 캐낸 문장을 <strong>iLGum</strong>에 심어 보세요.
+            </p>
+            <div
+              className="category-filter"
+              role="group"
+              aria-label="장르 선택"
+            >
               <button className="category-btn is-active">전체</button>
               <button className="category-btn">시/소설</button>
               <button className="category-btn">에세이</button>
@@ -92,7 +107,13 @@ export default function PostsListPage() {
               <button className="category-btn">기타</button>
             </div>
           </div>
-          <a className="compose-btn" href="/newpost" aria-label="새 기록 남기기">+ 새 문장 심기</a>
+          <a
+            className="compose-btn"
+            href="/newpost"
+            aria-label="새 기록 남기기"
+          >
+            + 새 문장 심기
+          </a>
         </section>
 
         <section className="post-list" aria-label="게시글 목록">

@@ -4,12 +4,12 @@ export const SubmitButton = ({children, type='button', disabled, onClick }) => {
     return <button className="submit-btn" type={type} disabled={disabled} onClick={onClick}>{children}</button>
 }
 
-export const EditButton = ({ as = 'button', to, onClick, children = '수정', ...props }) => {
+export const EditButton = ({ as = 'button', to, onClick, children, ...props }) => {
   if (as === 'link') return <Link className="edit-btn" to={to} {...props}>{children}</Link>
   return <button type="button" className="edit-btn" onClick={onClick} {...props}>{children}</button>
 }
 
-export const DeleteButton = ({children='삭제', ...props}) => {
+export const DeleteButton = ({children, ...props}) => {
     return <button className="delete-btn" {...props}>{children}</button>
 }
 
@@ -21,10 +21,10 @@ export const CancelButton = ({ children = '취소', ...props }) => (
   <button type="button" className="cancel-btn" {...props}>{children}</button>
 )
 
-export const ProfileButton = ({children}) => {
-    return (
+export const ProfileButton = ({ children, avatar = 'https://avatars.githubusercontent.com/u/138593109?v=4' }) => {
+  return (
     <summary className="profile-button" aria-label="내 프로필">
-      <span className="profile-avatar" aria-hidden="true"></span>
+      <img src={avatar} alt="프로필" className="profile-avatar" />
       {children}
     </summary>
   )

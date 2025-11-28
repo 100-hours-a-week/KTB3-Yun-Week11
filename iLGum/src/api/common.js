@@ -9,12 +9,6 @@ export const apiFetch = async (path, options = {}) => {
     ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
   };
 
-  console.log("fetch 실제 요청:", `${API_BASE}${path}`, {
-    ...options,
-    credentials: options.credentials ?? "include",
-    headers,
-  });
-
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     credentials: options.credentials ?? "include",

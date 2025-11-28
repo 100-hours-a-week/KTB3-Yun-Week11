@@ -2,12 +2,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { apiFetch, logoutFetch } from "../api/common";
 import { auth } from "../api/auth";
-import { ConfirmModal } from "../components/Modal"
-import {
-  BackButton,
-  DropdownMenu,
-  EditButton,
-} from "../components/Buttons";
+import Comments from "../components/Comments";
+import { ConfirmModal } from "../components/Modal";
+import { BackButton, DropdownMenu, EditButton } from "../components/Buttons";
 import "../styles/post.css";
 
 export default function PostDetailPage() {
@@ -30,6 +27,11 @@ export default function PostDetailPage() {
           const body = await res.json();
           setPost(body?.data ?? body);
         }
+
+        if (res.status === 403) {
+          console.log(res.body);
+          navigate("/");
+        }
       } catch (err) {
         console.log("요청 실패", err);
       }
@@ -45,6 +47,11 @@ export default function PostDetailPage() {
         navigate("/");
         return;
       }
+
+      if (res.status === 403) {
+        console.log(res.body);
+        navigate("/");
+      }
     } catch (err) {
       console.log("요청 실패", err);
     }
@@ -52,14 +59,19 @@ export default function PostDetailPage() {
 
   const handleDelete = async () => {
     try {
-        const res = await apiFetch(`/posts/${postId}`, { method: 'DELETE' })
-        if (res.status === 204) {
-            alert('게시글이 삭제되었습니다.')
-            navigate('/posts')
-        }
-    } catch(err) {
-        console.log('요청 실패', err)
-        return
+      const res = await apiFetch(`/posts/${postId}`, { method: "DELETE" });
+      if (res.status === 204) {
+        alert("게시글이 삭제되었습니다.");
+        navigate("/posts");
+      }
+
+      if (res.status === 403) {
+        console.log(res.body);
+        navigate("/");
+      }
+    } catch (err) {
+      console.log("요청 실패", err);
+      return;
     }
   };
 
@@ -151,12 +163,13 @@ export default function PostDetailPage() {
               <div className="stat-label">댓글</div>
             </div>
           </section>
+          <Comments postId={postId} initialComments={post.commentsList || []} />
         </article>
       </main>
       <ConfirmModal
         open={showPostModal}
-        title="삭제하시겠습니까?"
-        message="삭제 후 복구할 수 없습니다."
+        title="게시글을 삭제하시겠습니까?"
+        message="삭제한 내용은 복구할 수 없습니다."
         onConfirm={handleDelete}
         onCancel={() => setShowPostModal(false)}
       />

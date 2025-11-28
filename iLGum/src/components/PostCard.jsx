@@ -8,6 +8,7 @@ export default function PostCard({
     views=0,
     createdAt='',
     nickname='',
+    profileImage="https://avatars.githubusercontent.com/u/138593109?v=4"
 }) {
     return (
     <Link to={`/post?postId=${postId}`} className="post-link" aria-label={`${title} 상세 보기`}>
@@ -24,7 +25,11 @@ export default function PostCard({
           <time className="post-time" dateTime={createdAt}>{createdAt}</time>
         </div>
         <footer className="post-foot">
-          <span className="author-avatar" aria-hidden="true"></span>
+          <img
+            src={profileImage}
+            alt={nickname ? `${nickname} 프로필` : '작성자 프로필'}
+            className="author-avatar"
+          />
           <span className="author-name">{nickname}</span>
         </footer>
       </article>

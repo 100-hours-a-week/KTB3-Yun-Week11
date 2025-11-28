@@ -21,6 +21,7 @@ body {
   background: radial-gradient(circle at 20% 20%, rgba(249, 175, 60, 0.15), transparent 45%),
               radial-gradient(circle at 80% 0%, rgba(90, 145, 255, 0.18), transparent 35%),
               var(--bg);
+  overflow: visible;
 }
 
 a {
