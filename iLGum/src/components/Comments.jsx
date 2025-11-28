@@ -79,6 +79,7 @@ export default function Comments({ postId, initialComments }) {
       }
       if (res.status === 403) {
         alert('작성자만 삭제할 수 있습니다.')
+        setShowDeleteModal(false)
         return
       }
     } catch (err) {

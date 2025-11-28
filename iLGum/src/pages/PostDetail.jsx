@@ -66,8 +66,9 @@ export default function PostDetailPage() {
       }
 
       if (res.status === 403) {
-        console.log(res.body);
-        navigate("/");
+        alert('작성자만 삭제할 수 있습니다.')
+        setShowPostModal(false)
+        return
       }
     } catch (err) {
       console.log("요청 실패", err);
