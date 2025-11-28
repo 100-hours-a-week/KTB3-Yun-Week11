@@ -11,6 +11,8 @@ export default function PostDetailPage() {
   const [searchParams] = useSearchParams();
   const postId = searchParams.get("postId");
   const [post, setPost] = useState(null);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(post?.likes ?? 0);
   const [showPostModal, setShowPostModal] = useState(false);
   const navigate = useNavigate();
 
@@ -26,9 +28,8 @@ export default function PostDetailPage() {
         if (res.ok) {
           const body = await res.json();
           setPost(body?.data ?? body);
-        }
-
-        if (res.status === 403) {
+          setLikeCount(body?.data.likes ?? 0);
+        } else if (res.status === 403) {
           console.log(res.body);
           navigate("/");
         }
@@ -36,7 +37,16 @@ export default function PostDetailPage() {
         console.log("요청 실패", err);
       }
     };
+
+    const loadIsLiked = async () => {
+      const res = await apiFetch(`/posts/${postId}/likes`, { method: "GET" });
+      if (res.ok) {
+        const body = await res.json();
+        setLiked(Boolean(body));
+      }
+    };
     loadPost();
+    loadIsLiked();
   }, [postId, navigate]);
 
   const handleLogout = async () => {
@@ -66,13 +76,29 @@ export default function PostDetailPage() {
       }
 
       if (res.status === 403) {
-        alert('작성자만 삭제할 수 있습니다.')
-        setShowPostModal(false)
-        return
+        alert("작성자만 삭제할 수 있습니다.");
+        setShowPostModal(false);
+        return;
       }
     } catch (err) {
       console.log("요청 실패", err);
       return;
+    }
+  };
+
+  const toggleLike = async () => {
+    const next = !liked;
+    setLiked(next);
+    setLikeCount((prev) => prev + (next ? 1 : -1));
+    try {
+      const res = await apiFetch(`/posts/${postId}/likes`, {
+        method: next ? "POST" : "DELETE",
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      // 실패 시 원복
+      setLiked(!next);
+      setLikeCount((prev) => prev + (next ? -1 : 1));
     }
   };
 
@@ -150,9 +176,10 @@ export default function PostDetailPage() {
           <section className="post-stats">
             <div
               className="stat-item stat-like-toggle"
-              data-liked={post.liked ? "true" : "false"}
+              data-liked={liked? 'true' : 'false'}
+              onClick={toggleLike}
             >
-              <div className="stat-value">{post.likes ?? 0}</div>
+              <div className="stat-value">{likeCount}</div>
               <div className="stat-label">좋아요수</div>
             </div>
             <div className="stat-item">
