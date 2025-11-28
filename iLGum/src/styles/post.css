@@ -1,7 +1,7 @@
 :root {
   --bg: #dcc7a1;
   --ink: #1d1a14;
-  --muted: #7f776b;
+  --muted: #a99c8a;
   --line: rgba(0, 0, 0, 0.1);
   --panel: rgba(255, 255, 255, 0.92);
   --accent: #8a9b6e;
@@ -21,7 +21,6 @@ body {
   background: radial-gradient(circle at 20% 20%, rgba(249, 175, 60, 0.15), transparent 45%),
               radial-gradient(circle at 80% 0%, rgba(90, 145, 255, 0.18), transparent 35%),
               var(--bg);
-  overflow: visible;
 }
 
 a {
@@ -222,6 +221,7 @@ button {
 }
 .post-date {
   font-size: 14px;
+  color: var(--ink);
 }
 .post-buttons {
   display: inline-flex;
@@ -280,6 +280,12 @@ button {
   flex-direction: column;
   gap: 6px;
 }
+
+.book-meta .book-author,
+.book-meta .book-period,
+.post-stats .stat-value,
+.post-stats .stat-label { color: #e7e4e1; } 
+
 .book-title {
   margin: 0;
   font-size: 20px;

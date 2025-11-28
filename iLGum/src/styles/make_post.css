@@ -1,12 +1,11 @@
 :root {
-  --bg: #dcc7a1;
-  --ink: #1d1a14;
-  --muted: #786f63;
-  --line: rgba(0, 0, 0, 0.12);
-  --panel: rgba(255, 255, 255, 0.92);
-  --primary: #8a9b6e;
-  --primary-strong: #6c7d51;
-  --shadow: rgba(8, 11, 17, 0.2);
+  --bg-dark: #dcc7a1;
+  --accent: #8a9b6e;
+  --accent-strong: #6c7d51;
+  --accent-weak: rgba(249, 175, 60, 0.25);
+  --ink: #e7e4e1;
+  --muted: #a8b0c0;
+  --line: rgba(255, 255, 255, 0.1);
   --helper: #ff4f4f;
   --font-body: 'Pretendard', sans-serif;
 }
@@ -15,7 +14,7 @@
   box-sizing: border-box;
 }
 
-.make-post-form {
+body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-body);
@@ -25,15 +24,15 @@
               var(--bg-dark);
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
 
-.make-post-layout {
-  flex: 1;
-  flex-direction: row;
+.make-post-layout,
+.edit-post-layout {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;     /* 세로 중앙 */
+  justify-content: center; /* 가로 중앙 */
   gap: 32px;
   padding: 32px 24px;
 }

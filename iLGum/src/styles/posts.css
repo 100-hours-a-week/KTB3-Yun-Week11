@@ -7,7 +7,6 @@
   --primary: #8a9b6e;
   --primary-strong: #6c7d51;
   --shadow: rgba(8, 11, 17, 0.2);
-  --helper: #ff4f4f;
   --font-body: 'Pretendard', sans-serif;
 }
 
@@ -332,9 +331,15 @@ a {
   gap: 12px;
   color: var(--muted);
   font-size: 14px;
-}
+} 
+
+.post-stats .stat-like,
+.post-stats .stat-comment,
+.post-stats .stat-view { color: #e7e4e1; }
+
+
 .post-time {
-  color: var(--muted);
+  color: #e7e4e1;
   font-size: 13px;
   white-space: nowrap;
 }

@@ -16,13 +16,14 @@ export const apiFetch = async (path, options = {}) => {
   });
 
   if (res.status === 401) {
-    const res = await apiFetch("/token", {
+    const refreshRes = await fetch(`${API_BASE}/token`, {
       method: "POST",
       credentials: "include",
+      headers: { 'Content-Type': 'application/json' }
     });
 
-    if (res.ok) {
-      const payload = await res.json();
+    if (refreshRes.ok) {
+      const payload = await refreshRes.json();
       auth.setTokens(payload);
       return apiFetch(path, options);
     }

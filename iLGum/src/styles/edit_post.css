@@ -1,34 +1,33 @@
 :root {
-  --bg-dark: #dcc7a1;
-  --accent: #8a9b6e;
-  --accent-strong: #6c7d51;
-  --accent-weak: rgba(249, 175, 60, 0.25);
-  --ink: #e7e4e1;
-  --line: rgba(255, 255, 255, 0.1);
-  --helper: #ff4f4f;
+  --bg-dark: #DCC7A1;
+  --bg-panel: #1C2A3A;
+  --accent: #8A9B6E;
+  --accent-weak: rgba(249, 175, 60, 0.2);
+  --ink: #1d1a14;
+  --muted: #9da5b4;
+  --line: rgba(255, 255, 255, 0.08);
   --font-body: 'Pretendard', sans-serif;
+  --font-serif: 'Pretendard', sans-serif;
+  --helper: #ff3838;
 }
-
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
+.make-post-layout,
+.edit-post-layout {
   min-height: 100vh;
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: radial-gradient(circle at 20% 20%, rgba(249, 175, 60, 0.15), transparent 45%),
-              radial-gradient(circle at 80% 0%, rgba(90, 145, 255, 0.18), transparent 35%),
-              var(--bg-dark);
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  align-items: center;     /* 세로 중앙 */
+  justify-content: center; /* 가로 중앙 */
+  gap: 32px;
+  padding: 32px 24px;
 }
 
 .edit-post-layout {
   flex: 1;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 32px;

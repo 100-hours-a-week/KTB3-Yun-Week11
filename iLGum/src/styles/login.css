@@ -11,7 +11,7 @@
   --helper: #ff3838;
 }
 
-body {
+.login-layout {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-body);

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { apiFetch } from "../api/common";
 import { useNavigate } from "react-router-dom";
 import PostForm from "../components/PostForm";
-import '../styles/make_post.css'
 
 const initial = {
   title: "",

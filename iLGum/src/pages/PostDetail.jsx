@@ -96,7 +96,6 @@ export default function PostDetailPage() {
       });
       if (!res.ok) throw new Error();
     } catch {
-      // 실패 시 원복
       setLiked(!next);
       setLikeCount((prev) => prev + (next ? -1 : 1));
     }
@@ -132,7 +131,7 @@ export default function PostDetailPage() {
                 <time className="post-date">{post.createdAt}</time>
               </div>
               <div className="post-buttons">
-                <EditButton as="link" to={`/edit_post?postId=${postId}`}>
+                <EditButton as="link" to={`/editpost?postId=${postId}`}>
                   수정
                 </EditButton>
                 <button

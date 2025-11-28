@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { SubmitButton } from "./Buttons"
-import "../styles/make_post.css"
+import '../styles/make_post.css'
 
 export default function PostForm({ initialValues, onSubmit, submitLabel = "등록" }) {
   const [title, setTitle] = useState(initialValues.title || "")
