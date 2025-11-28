@@ -121,3 +121,22 @@
   font-size: 32px;
   color: #1d1a14;;
 }
+
+.edit-btn,
+.delete-btn {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.edit-btn:hover,
+.delete-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

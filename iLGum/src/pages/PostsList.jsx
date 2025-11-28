@@ -92,7 +92,7 @@ export default function PostsListPage() {
               <button className="category-btn">기타</button>
             </div>
           </div>
-          <a className="compose-btn" href="/make_post" aria-label="새 기록 남기기">+ 새 문장 심기</a>
+          <a className="compose-btn" href="/newpost" aria-label="새 기록 남기기">+ 새 문장 심기</a>
         </section>
 
         <section className="post-list" aria-label="게시글 목록">

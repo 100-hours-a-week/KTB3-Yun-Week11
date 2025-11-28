@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn,
+.confirm-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  color: #080b11;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--ink);
+}
+.confirm-btn {
+  background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+}
+.cancel-btn:hover,
+.confirm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+.cancel-btn:active,
+.confirm-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
