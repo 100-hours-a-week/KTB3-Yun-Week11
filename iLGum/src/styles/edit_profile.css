@@ -24,7 +24,7 @@ body {
               var(--bg-dark);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .edit-profile-layout {
