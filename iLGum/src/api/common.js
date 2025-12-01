@@ -15,7 +15,7 @@ export const apiFetch = async (path, options = {}) => {
     headers,
   });
 
-  if (res.status === 401) {
+  if (res.status === 401 || res.status === 403) {
     const refreshRes = await fetch(`${API_BASE}/token`, {
       method: "POST",
       credentials: "include",
