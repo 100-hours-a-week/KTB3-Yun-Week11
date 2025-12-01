@@ -243,6 +243,7 @@ body {
 }
 .my-posts-list .post-title {
   margin: 0 0 4px;
+  font-size: large;
   font-weight: 600;
   color: var(--accent);
 }
