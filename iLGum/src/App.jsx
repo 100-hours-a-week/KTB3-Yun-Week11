@@ -6,7 +6,7 @@ import PostDetailPage from './pages/PostDetail'
 import PostingPage from './pages/Posting'
 import PostEditingPage from './pages/PostEditing'
 import MyPage from './pages/MyPage'
-// import PasswordEditingPage from './pages/PasswordEditing'
+import PasswordEditingPage from './pages/PasswordEditing'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path="/newpost" element={<PostingPage />} />
           <Route path="/editpost" element={<PostEditingPage />} />
           <Route path="/mypage" element={<MyPage />} />
-          {/* <Route path="/newpassword" element={<PasswordEditingPage />} /> */}
+          <Route path="/newpassword" element={<PasswordEditingPage />} />
         
       </Routes>
     </BrowserRouter>
