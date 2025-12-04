@@ -1,7 +1,7 @@
 import { auth } from "./auth";
 
 export const API_BASE = "http://localhost:8080";
-export const apiFetch = async (path, options = {}) => {
+export const apiFetch = async (path, options = {}, allowRetry=true) => {
   const { accessToken } = auth.getToken();
   const headers = {
     "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export const apiFetch = async (path, options = {}) => {
     headers,
   });
 
-  if (res.status === 401 || res.status === 403) {
+  if ((res.status === 401 || res.status === 403) && allowRetry) {
     const refreshRes = await fetch(`${API_BASE}/token`, {
       method: "POST",
       credentials: "include",
@@ -25,7 +25,7 @@ export const apiFetch = async (path, options = {}) => {
     if (refreshRes.ok) {
       const payload = await refreshRes.json();
       auth.setTokens(payload);
-      return apiFetch(path, options);
+      return apiFetch(path, options, false);
     }
     auth.clearToken();
     return res;

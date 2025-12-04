@@ -26,6 +26,7 @@ body {
               var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
+  overflow: visible;
 }
 
 a {
